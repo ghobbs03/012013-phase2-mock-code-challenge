@@ -21,24 +21,29 @@ function App() {
 
   },[])
 
-  /*const addNewPlant = () => {
-    fetch(plantAPI, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newPlant),
-    }).then(resp => resp.json())
-    .then(plants => {
-      setPlants([...plants, newPlant])
-    })
-*/
+
 
   function handleNewPlant(newPlant) {
-    //addNewPlant();
-    setPlants([...plants, newPlant])
-    setInitialState([...plants, newPlant])
-    setInStockArray([...inStockArray, true]);
+    const addNewPlant = () => {
+      fetch(plantAPI, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newPlant),
+      }).then(resp => resp.json())
+      .then((plant) => {
+        setPlants([...plants, plant]);
+        setInitialState([...plants, plant]);
+        setInStockArray([...inStockArray, true]);
+      })
+    }
+
+    addNewPlant();
+
+    //setPlants([...plants, newPlant])
+    //setInitialState([...plants, newPlant])
+    //setInStockArray([...inStockArray, true]);
 
 
   }
