@@ -34,7 +34,6 @@ function App() {
     })
 */
 
-
   function handleNewPlant(newPlant) {
     //addNewPlant();
     setPlants([...plants, newPlant])
