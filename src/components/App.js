@@ -9,6 +9,7 @@ function App() {
   const [plants, setPlants] = useState([]);
   const [inStockArray, setInStockArray] = useState([]);
   const [initialPlantState, setInitialState] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch(plantAPI)
@@ -61,23 +62,14 @@ function App() {
 
   function handleSearch(event) {
     const name = event.target.value;
- 
- 
-    if (name === "") {
-      setPlants([...initialPlantState]);
-
-    } else {
-      const filteredPlants = plants.filter((plant) => (plant.name.toLowerCase().startsWith(name.toLowerCase())));
-      setPlants(filteredPlants);
-      console.log(plants)
-    }
+    setSearchTerm(name);
   }
 
 
   return (
     <div className="app">
       <Header />
-      <PlantPage plants={plants} handleNewPlant={handleNewPlant} inStockArray={inStockArray} handleOutOfStock={handleOutOfStock} handleSearch={handleSearch}/>
+      <PlantPage plants={plants.filter((plant) => (plant.name.toLowerCase().includes(searchTerm.toLowerCase())))} handleNewPlant={handleNewPlant} inStockArray={inStockArray} handleOutOfStock={handleOutOfStock} handleSearch={handleSearch}/>
     </div>
   );
 }

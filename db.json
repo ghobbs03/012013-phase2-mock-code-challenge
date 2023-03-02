@@ -47,6 +47,12 @@
       "image": "http://localhost:3000/images/pothos.jpg",
       "price": 1,
       "id": 8
+    },
+    {
+      "name": "new one",
+      "image": "http://localhost:3000/images/aloe.jpg",
+      "price": 1.1,
+      "id": 9
     }
   ]
 }
